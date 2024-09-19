@@ -20,7 +20,11 @@ public class Match {
             int team2Rounds = 0;
 
             while (true) {
-                if (random.nextBoolean()) { // random gives team1 or team2 wins
+                double totalProbability = team1.getProbability() + team2.getProbability(); 
+                double team1Probability = team1.getProbability() / totalProbability;
+                double chanceOfWinning = random.nextDouble();
+
+                if (chanceOfWinning < team1Probability) { // gives team1 or team2 a round based on calculated probability
                     team1Rounds++;
                     System.out.println(team1.getName() + " won the round. Total rounds: " + team1Rounds);
                 }
